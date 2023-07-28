@@ -67,7 +67,6 @@ services:
       driver: "json-file"
       options: {}
     mac_address: "02:42:ac:11:00:02"
-    network_mode: "bridge"
     ports:
       - "7009:7009/tcp"
     working_dir: "/international_javabackend"
