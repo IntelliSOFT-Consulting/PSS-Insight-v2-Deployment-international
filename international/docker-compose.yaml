@@ -116,7 +116,9 @@ services:
       - "5437:5432/tcp"
     restart: "always"
     volumes:
-      - "docker_db:/var/lib/postgresql/data"
+      # - "docker_db:/var/lib/postgresql/data"
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/int_backup.2023.07.28.sql:/docker-entrypoint-initdb.d/international_db.sql
 
 networks:
   docker_default:
@@ -125,5 +127,5 @@ networks:
 volumes:
   datadb:
   home:
-  docker_db:
+  postgres_data:
     external: false
