@@ -32,7 +32,7 @@ The installation process involves 2 stages:
 - Clone this repository into to your local environment
 
 ```git clone https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Deployment-national.git```
-- cd into the `international` folder
+- cd into the `international` folder. `cd international`
 - Follow the instructions detailed [here](./international/README.md)
 
 #### 2. Deploy PSS Insight v2 Web Apps
@@ -46,7 +46,7 @@ The following process will deploy the these custom web apps that are all part of
 - **DHIS2 Server instances**:
     - Ensure that your national instance of DHIS2 is running (This is the instance just installed).
     - Ensure that you have the URL to the international instance.
-- Confirm that the following environment variables have been set correctly in the [.env](./national/.env) file
+- Confirm that the following environment variables have been set correctly in the [.env](./international/.env) file
 
 #### .env file setup
 | Variable        | Description                                                                                                  |
@@ -54,7 +54,6 @@ The following process will deploy the these custom web apps that are all part of
 | SOURCE_USERNAME | URL Path to the national instance e.g.  http://pssnational.intellisoftkenya.com                              |
 | SOURCE_PASSWORD | DHIS2 username: admin                                                                                        |
 | SOURCE_URL      | DHIS2 Password: district                                                                                     |
-| TARGET_URL      | URL Path to the international instance e.g. http://pssinternational.intellisoftkenya.com                     |
 | DHIS2_CONFIGURATION_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-International-Dhis2App/archive/refs/tags/v1.0.0.zip |
 | DHIS2_DATA_IMPORT_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Data-Import-Admin/archive/refs/tags/v1.0.0.zip      |
 

@@ -69,8 +69,7 @@ deploy_dhis2_app() {
     cd "$app_folder" || exit
 
     # create a .env file
-    echo "REACT_APP_NATIONAL_URL=$dhis2_url" >.env
-    echo "REACT_APP_INTERNATIONAL_URL=$dhis2_intl_url" >>.env
+    echo "REACT_APP_SERVER_URL=$dhis2_url" >.env
 
     # install dependencies, build and deploy the app
     echo "Installing dependencies..."
@@ -91,12 +90,9 @@ deploy_dhis2_app() {
 dhis2_url=""
 username=""
 password=""
-dhis2_intl_url=""
 
-data_entry_app_release=""
 config_app_release=""
 data_import_app_release=""
-indicator_sync_app_release=""
 
 while IFS= read -r line; do
     # skip comments
@@ -109,22 +105,16 @@ while IFS= read -r line; do
         username="${BASH_REMATCH[1]}"
     elif [[ $line =~ ^SOURCE_PASSWORD=(.*)$ ]]; then
         password="${BASH_REMATCH[1]}"
-    elif [[ $line =~ ^TARGET_URL=(.*)$ ]]; then
-        dhis2_intl_url="${BASH_REMATCH[1]%/api/*}"
-    elif [[ $line =~ ^DHIS2_DATA_ENTRY_RELEASE_URL=(.*)$ ]]; then
-        data_entry_app_release="${BASH_REMATCH[1]}"
     elif [[ $line =~ ^DHIS2_CONFIG_RELEASE_URL=(.*)$ ]]; then
         config_app_release="${BASH_REMATCH[1]}"
     elif [[ $line =~ ^DHIS2_DATA_IMPORT_RELEASE_URL=(.*)$ ]]; then
         data_import_app_release="${BASH_REMATCH[1]}"
-    elif [[ $line =~ ^DHIS2_INDICATOR_SYNC_RELEASE_URL=(.*)$ ]]; then
-        indicator_sync_app_release="${BASH_REMATCH[1]}"
     fi
 done <../.env
 
 # ask for the DHIS2 URL if it is not set in the .env file
 if [[ -z $dhis2_url ]]; then
-    read -p "Enter the DHIS2 URL for the national instance: " dhis2_url
+    read -p "Enter the DHIS2 URL: " dhis2_url
     if [[ ! $dhis2_url =~ ^https?:// ]]; then
         tput setaf 1
         echo "Invalid URL. Please enter a valid URL."
@@ -134,7 +124,7 @@ fi
 
 # ask for the DHIS2 username if it is not set in the .env file
 if [[ -z $username ]]; then
-    read -p "Enter your DHIS2 username for the national instance: " username
+    read -p "Enter your DHIS2 username: " username
     if [[ -z $username ]]; then
         tput setaf 1
         echo "Username cannot be empty. Please enter a valid username."
@@ -145,7 +135,7 @@ fi
 # ask for the DHIS2 password if it is not set in the .env file
 if [[ -z $password ]]; then
 
-    read -s -p "Enter your DHIS2 password for the national instance: " password
+    read -s -p "Enter your DHIS2 password: " password
     if [[ -z $password ]]; then
         tput setaf 1
         echo "Password cannot be empty. Please enter a valid password."
@@ -164,18 +154,13 @@ if [[ $response -ne 200 ]]; then
 fi
 
 # if all releases do not have a value, throw an error and exit
-if [[ -z $data_entry_app_release && -z $config_app_release && -z $data_import_app_release && -z $indicator_sync_app_release ]]; then
+if [[ -z $config_app_release && -z $data_import_app_release ]]; then
     tput setaf 1
     echo "Please set the release URLs for the apps in the .env file."
     exit 1
 fi
 
 # only deploy the apps that have a release URL
-if [[ ! -z $data_entry_app_release ]]; then
-    echo "Deploying Data Entry app..."
-    deploy_dhis2_app "$data_entry_app_release"
-fi
-
 if [[ ! -z $config_app_release ]]; then
     echo "Deploying Configuration app..."
     deploy_dhis2_app "$config_app_release"
@@ -184,11 +169,6 @@ fi
 if [[ ! -z $data_import_app_release ]]; then
     echo "Deploying Data Import app..."
     deploy_dhis2_app "$data_import_app_release"
-fi
-
-if [[ ! -z $indicator_sync_app_release ]]; then
-    echo "Deploying Indicator Sync app..."
-    deploy_dhis2_app "$indicator_sync_app_release"
 fi
 
 tput setaf 2
