@@ -67,8 +67,6 @@ services:
     working_dir: "/international_javabackend"
     depends_on:
       - pss_ws_international_db
-    networks:
-      - docker_default
 
   pss_ws_international_db:
     command:
@@ -114,10 +112,10 @@ services:
 
 networks:
   docker_default:
-    external: no
+    external: false
     name: docker_default
 volumes:
   datadb:
   home:
   docker_db:
-    external: no
+    external: false
