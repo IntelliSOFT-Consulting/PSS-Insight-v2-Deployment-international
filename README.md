@@ -1,39 +1,78 @@
 # PSS-Insight-v2-Deployment
 
-## Deployment Instructions
+## Table of contents
+<!-- TOC -->
+* [PSS-Insight-v2-Deployment](#pss-insight-v2-deployment)
+    * [Table of contents](#table-of-contents)
+    * [Pre-requisites](#pre-requisites)
+        * [Steps](#steps)
+    * [Installation steps](#installation-steps)
+        * [1. Deploy DHIS2](#1-deploy-dhis2)
+        * [2. Deploy PSS Insight v2 Web Apps](#2-deploy-pss-insight-v2-web-apps)
+            * [Pre-requisites](#pre-requisites-1)
+            * [Run deployment script](#run-deployment-script)
+<!-- TOC -->
+## Pre-requisites
 
-### Pre-requisites
+- OS Architecture: **linux/amd64. Preferably Ubuntu 20.04LTS and above**
+- **Docker and Docker Compose**. Instructions for installing on an Ubuntu OS can be found here https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
+- **NodeJS - minimum version 14**: Instructions for installing NodeJS on an Ubuntu OS can be found here https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04
+- **Yarn**: Instructions for installing Yarn can be found here https://classic.yarnpkg.com/lang/en/docs/install
+- **Unzip**: You need to have unzip installed on your system.
 
-- OS Architecture: **linux/amd64**  
-- Docker and Docker Compose should be installed on your system. Instructions for installing on an Ubuntu OS can be found here https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
+### Steps
+The installation process involves 2 stages:
 
-### Step 1: Clone the Repository
+1. Deploy DHIS2
 
- - Clone this repository into to your local environment
- - cd into the `national` folder to start the network setup
+2. Deploy PSS Insight v2 WebApps
+## Installation steps
+#### 1. Deploy DHIS2
 
-### Step 2: Deployment via Docker
- - Follow the instructions detailed [here](./international/README.md)
+- Clone this repository into to your local environment
 
-### Step 3: Deploy custom apps
+```git clone https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Deployment-national.git```
+- cd into the `international` folder
+- Follow the instructions detailed [here](./international/README.md)
 
-#### Pre-requisites
+#### 2. Deploy PSS Insight v2 Web Apps
 
-DHIS2 Server: You need to have a running DHIS2 instance accessible over the internet.
-NodeJS: You need to have NodeJS V 14+ installed on your system. Instructions for installing NodeJS on an Ubuntu OS can be found here https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04
-Yarn: You need to have Yarn installed on your system. Instructions for installing Yarn can be found here https://classic.yarnpkg.com/lang/en/docs/install
+The following process will deploy the these custom web apps that are all part of the PSS V2 application:
+- [PSS Insight v2 Configuration app](https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Intenational-Dhis2App)
+- [PSS Insight v2 Data Import app](https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Data-Import-Admin)
 
-#### Required keys
-| Field | Description | Example |
-| --- | --- | --- |
-| Enter the DHIS2 URL for the national instance | The URL of the DHIS2 instance you're deploying the app to | http://pssnational2.intellisoftkenya.com|
-| Enter your DHIS2 username for the national instance | The username of the DHIS2 instance | admin |
-| Enter your DHIS2 password for the national instance | The password of the DHIS2 instance | district |
-| Enter the backend URL for national instance | The URL of the backend instance | https://pss-insight-backend-current.com |
-| Enter the backend URL for the international instance | The URL of the backend of international instance | https://pss-insight-backend-international.com |
+##### Pre-requisites
 
-#### Deploy
+- **DHIS2 Server instances**:
+    - Ensure that your national instance of DHIS2 is running (This is the instance just installed).
+    - Ensure that you have the URL to the international instance.
+- Confirm that the following environment variables have been set correctly in the [.env](./national/.env) file
+
+#### .env file setup
+| Variable        | Description                                                                                                  |
+|-----------------|--------------------------------------------------------------------------------------------------------------|
+| SOURCE_USERNAME | URL Path to the national instance e.g.  http://pssnational.intellisoftkenya.com                              |
+| SOURCE_PASSWORD | DHIS2 username: admin                                                                                        |
+| SOURCE_URL      | DHIS2 Password: district                                                                                     |
+| TARGET_URL      | URL Path to the international instance e.g. http://pssinternational.intellisoftkenya.com                     |
+| DHIS2_CONFIGURATION_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-International-Dhis2App/archive/refs/tags/v1.0.0.zip |
+| DHIS2_DATA_IMPORT_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Data-Import-Admin/archive/refs/tags/v1.0.0.zip      |
+
+> Note:
+
+- You have to include the `http://` or `https://` protocol in the URLs
+- The URLs should point to the zip files of the apps.
+- Only add the urls for the apps you want to deploy. If you don't want to deploy an app, leave the field for that app blank.
+- At least one app must be deployed. Failure to deploy at least one app will result in an error.
+
+### Deploy
+
+
+##### Run the app deployment script
+- cd into the scripts folder. `cd scripts/`
 - run `sudo chmod 755 ./webapps.sh` to make the script executable
 - run `./webapps.sh` to deploy the apps to your DHIS2 instance
-- Enter the required keys as prompted
+- Enter the required keys as prompted (You may not be prompted if the keys are found in the [.env](./national/.env) file)
+
+*This process will take a few minutes to complete as the apps are built and deployed*
 
