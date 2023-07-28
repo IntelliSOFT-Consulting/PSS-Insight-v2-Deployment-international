@@ -13,7 +13,7 @@
  - cd into the `national` folder to start the network setup
 
 ### Step 2: Deployment via Docker
- - Follow the instructions detailed [here](./national/README.md)
+ - Follow the instructions detailed [here](./international/README.md)
 
 ### Step 3: Deploy custom apps
 
