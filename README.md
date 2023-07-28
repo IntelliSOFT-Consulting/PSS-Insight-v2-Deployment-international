@@ -22,18 +22,16 @@
 DHIS2 Server: You need to have a running DHIS2 instance accessible over the internet.
 NodeJS: You need to have NodeJS V 14+ installed on your system. Instructions for installing NodeJS on an Ubuntu OS can be found here https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04
 Yarn: You need to have Yarn installed on your system. Instructions for installing Yarn can be found here https://classic.yarnpkg.com/lang/en/docs/install
+Unzip: You need to have unzip installed on your system.
 
 #### Required keys
 | Field | Description | Example |
 | --- | --- | --- |
-| Enter the DHIS2 URL for the national instance | The URL of the DHIS2 instance you're deploying the app to | http://pssnational2.intellisoftkenya.com|
-| Enter your DHIS2 username for the national instance | The username of the DHIS2 instance | admin |
-| Enter your DHIS2 password for the national instance | The password of the DHIS2 instance | district |
-| Enter the backend URL for national instance | The URL of the backend instance | https://pss-insight-backend-current.com |
-| Enter the backend URL for the international instance | The URL of the backend of international instance | https://pss-insight-backend-international.com |
-
+| Enter the DHIS2 URL | The URL of the DHIS2 instance you're deploying the app to | http://pssnational2.intellisoftkenya.com|
+| Enter your DHIS2 username | The username of the DHIS2 instance | admin |
+| Enter your DHIS2 password | The password of the DHIS2 instance | district |
 #### Deploy
+- cd into the `international/scripts` folder
 - run `sudo chmod 755 ./webapps.sh` to make the script executable
 - run `./webapps.sh` to deploy the apps to your DHIS2 instance
-- Enter the required keys as prompted
-
+- Enter the required keys as prompted.
