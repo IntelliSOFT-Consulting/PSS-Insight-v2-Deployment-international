@@ -38,7 +38,7 @@ _(it may take a couple minutes for the Java server to initialize)_
 
 ### Accessing the installed application
 
-- Once the container is running: Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/)
+- Once the container is running: Your application will be accessible at [localhost:8080](http://localhost:8080/)
 
 
 ---
