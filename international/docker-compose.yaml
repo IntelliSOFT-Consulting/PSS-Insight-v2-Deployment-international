@@ -25,6 +25,8 @@ services:
     restart: always
     volumes:
       - datadb:/var/lib/postgresql/data
+      - ./db/int_dhis2_core_backup.2023.07.26.sql.gz:/docker-entrypoint-initdb.d/dhis2.sql
+
     environment:
       POSTGRES_DB: dhis2
       POSTGRES_USER: dhis
