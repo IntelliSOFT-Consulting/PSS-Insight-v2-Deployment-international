@@ -12,7 +12,7 @@
 <!-- TOC -->
 ## Pre-requisites
 
-* In case you missed them, check out the previous steps [here](../README.md#1-deploy-dhis2)
+* In case you missed the previous steps, check out them out [here](../README.md#1-deploy-dhis2)
 
 ## Basic Setup
 
@@ -34,13 +34,11 @@ _(it may take a couple minutes for the Java server to initialize)_
 - **Note** that once the server is up and running you will need to export Analytics Tables in the [Data Administration app](http://localhost:8080/dhis-web-data-administration/index.action#/analytics).  This must be run as a system user and can take some time to complete.
 
 ### Deploy PSS V2 Web Apps
-Deploy the PSS v2 Web Apps. Follow the instructions [here](../README.md#2-deploy-pss-insight-v2-web-apps)
+- To deploy the PSS v2 Web Apps, follow the instructions [here](../README.md#2-deploy-pss-insight-v2-web-apps)
 
-### Accessing your new server
+### Accessing the installed application
 
-Once the container is running:
-
-* Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/)
+- Once the container is running: Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/)
 
 
 ---
@@ -64,7 +62,7 @@ metadata.audit.persist = on
 ---
 ## Additional commands
 ### Seeding
-First, seed the database with some dummy data (**optional**):
+Seeding the database with some dummy data (**optional**):
 
 ```bash
 > ./scripts/seed.sh db/int_dhis2_core_backup.2023.07.26.sql.gz
