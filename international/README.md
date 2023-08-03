@@ -21,7 +21,7 @@
 First, seed the database with some dummy data (**optional**):
 
 ```bash
-> ./scripts/seed.sh db/backup.2023.07.26.sql.gz
+> ./scripts/seed.sh db/int_dhis2_core_backup.2023.07.26.sql.gz
 ```
 
 **Note** that once the server is up and running you will need to export Analytics Tables in the [Data Administration app](http://localhost:8080/dhis-web-data-administration/index.action#/analytics).  This must be run as a system user and can take some time to complete.
