@@ -31,7 +31,7 @@ The installation process involves 2 stages:
 
 - Clone this repository into to your local environment
 
-```git clone https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Deployment-national.git```
+```git clone https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Deployment-international.git```
 - cd into the `international` folder. `cd international`
 - Follow the instructions detailed [here](./international/README.md)
 
