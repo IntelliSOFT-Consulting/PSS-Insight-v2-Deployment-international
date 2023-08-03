@@ -17,18 +17,10 @@
 * **OPTIONAL** A DHIS2 database `.sql` or `.sql.gz` dump compatible with the version of DHIS2 you will be installing (see db/int_dhis2_core_backup.2023.07.26.sql.gz))
 
 ## Basic Setup
-### Seeding
-First, seed the database with some dummy data (**optional**):
-
-```bash
-> ./scripts/seed.sh db/int_dhis2_core_backup.2023.07.26.sql.gz
-```
-
-**Note** that once the server is up and running you will need to export Analytics Tables in the [Data Administration app](http://localhost:8080/dhis-web-data-administration/index.action#/analytics).  This must be run as a system user and can take some time to complete.
 
 ### Start the services
 
-Once the containers have been built and the database seeded you can start the cluster:
+This process will use the (docker-compose file)[../docker-compose.yaml] to fire up all the services that support the PSS V2 application.
 
 ```bash
 > ./scripts/start.sh
@@ -40,6 +32,8 @@ _(it may take a couple minutes for the Java server to initialize)_
 Once started, the services should automatically restart if Docker or the host machine are restarted.
 
 Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/) on the server.
+
+**Note** that once the server is up and running you will need to export Analytics Tables in the [Data Administration app](http://localhost:8080/dhis-web-data-administration/index.action#/analytics).  This must be run as a system user and can take some time to complete.
 
 Deploy the PSS v2 Web Apps. Follow the instructions [here](../README.md#2-deploy-pss-insight-v2-web-apps)
 
@@ -63,6 +57,13 @@ metadata.audit.persist = on
 
 ---
 ## Additional commands
+### Seeding
+First, seed the database with some dummy data (**optional**):
+
+```bash
+> ./scripts/seed.sh db/int_dhis2_core_backup.2023.07.26.sql.gz
+```
+
 You can stop the services manually:
 
 ```bash
