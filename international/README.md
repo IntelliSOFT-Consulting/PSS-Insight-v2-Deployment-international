@@ -18,7 +18,7 @@
 
 ### Start the services
 
-This process will use the [docker-compose file](docker-compose.yaml) to fire up all the services that support the PSS V2 application.
+- Run the command below. The command will use the [docker-compose file](docker-compose.yaml) to fire up all the services that support the PSS V2 application.
 
 ```bash
 > ./scripts/start.sh
@@ -27,14 +27,21 @@ This process will use the [docker-compose file](docker-compose.yaml) to fire up 
 _(it may take a couple minutes for the Java server to initialize)_
 
 
-Once started, the services should automatically restart if Docker or the host machine are restarted.
+- Once started, the services should automatically restart if Docker or the host machine are restarted.
 
-Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/) on the server.
+- Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/) on the server.
 
-**Note** that once the server is up and running you will need to export Analytics Tables in the [Data Administration app](http://localhost:8080/dhis-web-data-administration/index.action#/analytics).  This must be run as a system user and can take some time to complete.
+- **Note** that once the server is up and running you will need to export Analytics Tables in the [Data Administration app](http://localhost:8080/dhis-web-data-administration/index.action#/analytics).  This must be run as a system user and can take some time to complete.
 
 ### Deploy PSS V2 Web Apps
 Deploy the PSS v2 Web Apps. Follow the instructions [here](../README.md#2-deploy-pss-insight-v2-web-apps)
+
+### Accessing your new server
+
+Once the container is running:
+
+* Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/)
+
 
 ---
 ## Configuration and Logs
@@ -95,8 +102,3 @@ These environment variables can also be specified int the `.env` file
 
 It is possible to run multiple instances of the DHIS2 backend cluster on the same machine.  Since `docker-compose` uses the name of the directory as the project namespace for a cluster, it is currently necessary to keep separate copies of the `dhis2-backend` repo with different directory names, such as `backend` and `backend-231rc1`.  With this setup and using the environment variables above to select a core version tag and specify non-conflicting ports it is possibel to run multiple versions of the backend simultaneously.
 
-## Accessing your new server
-
-Once the container is running:
-
-* Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080/)
