@@ -3,7 +3,6 @@
 * [DHIS2 Dockerized Server](#dhis2-dockerized-server)
     * [Pre-requisites](#pre-requisites)
     * [Basic Setup](#basic-setup)
-        * [Seeding](#seeding)
         * [Start the services](#start-the-services)
     * [Configuration and Logs](#configuration-and-logs)
     * [Additional commands](#additional-commands)
@@ -14,7 +13,6 @@
 ## Pre-requisites
 
 * In case you missed them, check out the previous steps [here](../README.md#1-deploy-dhis2)
-* **OPTIONAL** A DHIS2 database `.sql` or `.sql.gz` dump compatible with the version of DHIS2 you will be installing (see db/int_dhis2_core_backup.2023.07.26.sql.gz))
 
 ## Basic Setup
 
@@ -35,6 +33,7 @@ Your DHIS2 instance will be accessible at [localhost:8080](http://localhost:8080
 
 **Note** that once the server is up and running you will need to export Analytics Tables in the [Data Administration app](http://localhost:8080/dhis-web-data-administration/index.action#/analytics).  This must be run as a system user and can take some time to complete.
 
+### Deploy PSS V2 Web Apps
 Deploy the PSS v2 Web Apps. Follow the instructions [here](../README.md#2-deploy-pss-insight-v2-web-apps)
 
 ---
