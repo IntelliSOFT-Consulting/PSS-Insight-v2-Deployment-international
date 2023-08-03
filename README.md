@@ -51,9 +51,9 @@ The following process will deploy the these custom web apps that are all part of
 #### .env file setup
 | Variable        | Description                                                                                                  |
 |-----------------|--------------------------------------------------------------------------------------------------------------|
-| SOURCE_USERNAME | URL Path to the national instance e.g.  http://pssnational.intellisoftkenya.com                              |
+| SOURCE_USERNAME | DHIS2 Password: district                                                                                     |
 | SOURCE_PASSWORD | DHIS2 username: admin                                                                                        |
-| SOURCE_URL      | DHIS2 Password: district                                                                                     |
+| SOURCE_URL      | URL Path to the national instance e.g.  http://pssnational.intellisoftkenya.com                              |
 | DHIS2_CONFIGURATION_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-International-Dhis2App/archive/refs/tags/v1.0.0.zip |
 | DHIS2_DATA_IMPORT_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Data-Import-Admin/archive/refs/tags/v1.0.0.zip      |
 
