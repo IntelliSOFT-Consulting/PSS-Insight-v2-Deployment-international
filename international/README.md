@@ -20,7 +20,7 @@
 
 ### Start the services
 
-This process will use the (docker-compose file)[../docker-compose.yaml] to fire up all the services that support the PSS V2 application.
+This process will use the [docker-compose file](docker-compose.yaml) to fire up all the services that support the PSS V2 application.
 
 ```bash
 > ./scripts/start.sh
