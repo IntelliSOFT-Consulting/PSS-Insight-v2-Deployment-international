@@ -48,21 +48,21 @@ The following process will deploy the these custom web apps that are all part of
     - Ensure that you have the URL to the international instance.
 - Confirm that the following environment variables have been set correctly in the [.env](./international/.env) file
 
-#### .env file setup
+#### Enviroment variables
 | Variable        | Description                                                                                                  |
 |-----------------|--------------------------------------------------------------------------------------------------------------|
 | SOURCE_USERNAME | DHIS2 Password: district                                                                                     |
 | SOURCE_PASSWORD | DHIS2 username: admin                                                                                        |
 | SOURCE_URL      | URL Path to the national instance e.g.  http://pssnational.intellisoftkenya.com                              |
-| DHIS2_CONFIGURATION_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-International-Dhis2App/archive/refs/tags/v1.0.0.zip |
+| DHIS2_CONFIGURATION_RELEASE_URL | Path to the https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-International-Dhis2App/archive/refs/tags/v1.0.0.zip |
 | DHIS2_DATA_IMPORT_RELEASE_URL | https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Data-Import-Admin/archive/refs/tags/v1.0.0.zip      |
 
-> Note:
-
-- You have to include the `http://` or `https://` protocol in the URLs
-- The URLs should point to the zip files of the apps.
-- Only add the urls for the apps you want to deploy. If you don't want to deploy an app, leave the field for that app blank.
-- At least one app must be deployed. Failure to deploy at least one app will result in an error.
+> Note for the WebApps environment variables i.e. DHIS2_CONFIGURATION_RELEASE_URL & DHIS2_DATA_IMPORT_RELEASE_URL:
+> 
+> - You have to include the `http://` or `https://` protocol in the URLs
+> - The URLs should point to the zip files where the WebApps have beenr released.
+> - Only add the urls for the apps you want to deploy. If you don't want to deploy an app, leave the field for that app blank.
+> - At least one app url must be specified. If none has been specified, the app deployment process will stop.
 
 ### Deploy
 
