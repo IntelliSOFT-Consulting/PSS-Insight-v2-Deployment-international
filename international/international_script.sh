@@ -87,7 +87,7 @@ while IFS= read -r line; do
     fi
 done <./.env
 
-while [[ $(curl -v http://localhost:8080 2>&1) != *"Connected to localhost"* ]]; do
+while [[ $(curl -v http://localhost:$dhis2_port>&1) != *"Connected to localhost"* ]]; do
     echo "DHIS2 core server is not running. Waiting for 10 seconds..."
     sleep 10
 done
