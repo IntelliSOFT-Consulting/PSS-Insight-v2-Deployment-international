@@ -73,4 +73,17 @@ sleep 10
 echo "Running containers:"
 docker ps
 
+# check if the DHIS2 core server is running before proceeding
+echo "Checking if the DHIS2 core server is running..."
+
+while [[ $(curl -v http://localhost:8080 2>&1) != *"Connected to localhost"* ]]; do
+    echo "DHIS2 core server is not running. Waiting for 10 seconds..."
+    sleep 10
+done
+
+echo "DHIS2 core server is running."
+
+echo "Installing DHIS2 apps..."
+cd scripts && ./webapps.sh
+
 echo "Deployment completed successfully!"
