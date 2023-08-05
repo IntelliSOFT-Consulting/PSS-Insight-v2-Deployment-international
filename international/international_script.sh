@@ -95,6 +95,6 @@ done
 echo "DHIS2 core server is running."
 
 echo "Installing DHIS2 apps..."
-cd scripts && ./webapps.sh
+cd scripts && chmod 755 ./webapps.sh && ./webapps.sh
 
 echo "Deployment completed successfully!"
