@@ -21,7 +21,7 @@ For the installation process to run smoothly, encure that the following pre-cond
 <!-- TOC -->
 ## Basic Installation Steps
 
-The basic installation process below will perform the following actions under the hood
+The basic installation process below will use default parameters to perform the following actions under the hood:
 * Deploy DHIS2
 * Deploy PSS Insight v2 WebApps
 
@@ -48,6 +48,30 @@ The steps are outlined below:
 Once the process concludes, the application will accessible via the http://localhost:8080 link
 
 ## Advanced Installation steps
+
+    This is an alternative installation process that that allows you to install the PSS Insight v2 
+    components one by one as you update the system parameters.
+    
+    System parameters have been defined as environment variables in the [.env](./international/.env) file. 
+    Below is a description of the various environment variables:
+
+### Enviroment variables
+| Variable        | Description                                                                                                  |
+|-----------------|--------------------------------------------------------------------------------------------------------------|
+| SOURCE_USERNAME | DHIS2 Password: district                                                                                     |
+| SOURCE_PASSWORD | DHIS2 username: admin                                                                                        |
+| SOURCE_URL      | URL Path to the national instance e.g.  http://pssnational.intellisoftkenya.com                              |
+| DHIS2_CONFIGURATION_RELEASE_URL | Path to the Configuration DHIS2 WebApp release. https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-International-Dhis2App/archive/refs/tags/v1.0.0.zip |
+| DHIS2_DATA_IMPORT_RELEASE_URL | Path to the Data Import DHIS2 WebApp release. https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Data-Import-Admin/archive/refs/tags/v1.0.0.zip      |
+
+> Note for the DHIS2 WebApps release path environment variables i.e. DHIS2_CONFIGURATION_RELEASE_URL & DHIS2_DATA_IMPORT_RELEASE_URL:
+> 
+> - You have to include the `http://` or `https://` protocol in the URLs
+> - The URLs should point to the zip files where the WebApps have beenr released.
+> - Only add the urls for the apps you want to deploy. If you don't want to deploy an app, leave the field for that app blank.
+> - At least one app url must be specified. If none has been specified, the app deployment process will stop.
+
+
 #### 1. Deploy DHIS2
 
 - Clone this repository into to your local environment
@@ -67,26 +91,8 @@ The following process will deploy the these custom web apps that are all part of
 - **DHIS2 Server instances**:
     - Ensure that your national instance of DHIS2 is running (This is the instance just installed).
     - Ensure that you have the URL to the international instance.
-- Confirm that the following environment variables have been set correctly in the [.env](./international/.env) file
-
-#### Enviroment variables
-| Variable        | Description                                                                                                  |
-|-----------------|--------------------------------------------------------------------------------------------------------------|
-| SOURCE_USERNAME | DHIS2 Password: district                                                                                     |
-| SOURCE_PASSWORD | DHIS2 username: admin                                                                                        |
-| SOURCE_URL      | URL Path to the national instance e.g.  http://pssnational.intellisoftkenya.com                              |
-| DHIS2_CONFIGURATION_RELEASE_URL | Path to the Configuration DHIS2 WebApp release. https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-International-Dhis2App/archive/refs/tags/v1.0.0.zip |
-| DHIS2_DATA_IMPORT_RELEASE_URL | Path to the Data Import DHIS2 WebApp release. https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Data-Import-Admin/archive/refs/tags/v1.0.0.zip      |
-
-> Note for the DHIS2 WebApps release path environment variables i.e. DHIS2_CONFIGURATION_RELEASE_URL & DHIS2_DATA_IMPORT_RELEASE_URL:
-> 
-> - You have to include the `http://` or `https://` protocol in the URLs
-> - The URLs should point to the zip files where the WebApps have beenr released.
-> - Only add the urls for the apps you want to deploy. If you don't want to deploy an app, leave the field for that app blank.
-> - At least one app url must be specified. If none has been specified, the app deployment process will stop.
 
 ### Deploy
-
 
 ##### Run the app deployment script
 - cd into the scripts folder. `cd scripts/`
