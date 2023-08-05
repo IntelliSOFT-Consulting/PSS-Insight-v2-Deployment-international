@@ -1,32 +1,53 @@
 # PSS-Insight-v2-Deployment
 
 ## Table of contents
-<!-- TOC -->
-* [PSS-Insight-v2-Deployment](#pss-insight-v2-deployment)
-    * [Table of contents](#table-of-contents)
-    * [Pre-requisites](#pre-requisites)
-        * [Steps](#steps)
-    * [Installation steps](#installation-steps)
-        * [1. Deploy DHIS2](#1-deploy-dhis2)
-        * [2. Deploy PSS Insight v2 Web Apps](#2-deploy-pss-insight-v2-web-apps)
-            * [Pre-requisites](#pre-requisites-1)
-            * [Run deployment script](#run-deployment-script)
+ * [Pre-requisites](#pre-requisites)
+     * [Steps](#steps)
+ * [Installation steps](#installation-steps)
+     * [1. Deploy DHIS2](#1-deploy-dhis2)
+     * [2. Deploy PSS Insight v2 Web Apps](#2-deploy-pss-insight-v2-web-apps)
+         * [Pre-requisites](#pre-requisites-1)
+         * [Run deployment script](#run-deployment-script)
 <!-- TOC -->
 ## Pre-requisites
+
+For the installation process to run smoothly, encure that the following pre-conditions have been met. The installation script will check to ensure that all the pre-requisites have been met and will fail if one of them is not met.
 
 - OS Architecture: **linux/amd64. Preferably Ubuntu 20.04LTS and above**
 - **Docker and Docker Compose**. Instructions for installing on an Ubuntu OS can be found here https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
 - **NodeJS - minimum version 14**: Instructions for installing NodeJS on an Ubuntu OS can be found here https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04
 - **Yarn**: Instructions for installing Yarn can be found here https://classic.yarnpkg.com/lang/en/docs/install
 - **Unzip**: You need to have unzip installed on your system.
+<!-- TOC -->
+## Basic Installation Steps
 
-### Steps
-The installation process involves 2 stages:
+The basic installation process below will perform the following actions under the hood
+* Deploy DHIS2
+* Deploy PSS Insight v2 WebApps
 
-1. Deploy DHIS2
+The steps are outlined below:
 
-2. Deploy PSS Insight v2 WebApps
-## Installation steps
+1. Clone the project repository
+
+         git clone https://github.com/IntelliSOFT-Consulting/PSS-Insight-v2-Deployment-international.git
+
+2. cd into the project directory
+         
+         cd PSS-Insight-v2-Deployment-international
+
+4. Update permissions of the installation script
+
+         chmod 755 ./international/international_script.sh
+
+5. Run the installation script 
+
+         ./international/international_script.sh
+
+*The process will run for a few minutes.*
+
+Once the process concludes, the application will accessible via the http://localhost:8080 link
+
+## Advanced Installation steps
 #### 1. Deploy DHIS2
 
 - Clone this repository into to your local environment
