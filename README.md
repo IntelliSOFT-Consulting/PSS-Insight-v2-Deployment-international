@@ -36,15 +36,15 @@ The steps are outlined below:
 
 2. cd into the project directory
          
-         cd PSS-Insight-v2-Deployment-international
+         cd PSS-Insight-v2-Deployment-international/international
 
 3. Make the installation script executable
 
-         sudo chmod 755 ./international/international_script.sh
+         sudo chmod 755 ./international_script.sh
 
 4. Run the installation script 
 
-         ./international/international_script.sh
+         ./international_script.sh
 
 *The process will run for a few minutes.*
 
