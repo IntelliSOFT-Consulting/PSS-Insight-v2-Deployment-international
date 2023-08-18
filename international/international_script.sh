@@ -11,6 +11,23 @@ if ! command -v docker-compose &> /dev/null; then
     exit 1
 fi
 
+if ! command -v unzip &>/dev/null; then
+    tput setaf 1
+    echo "unzip is not installed. Please install unzip before running this script."
+    exit 1
+fi
+
+node_version=$(node -v)
+if [[ $node_version =~ ^v([0-9]+)\. ]]; then
+    node_major_version="${BASH_REMATCH[1]}"
+    if [[ $node_major_version -lt 14 ]]; then
+        tput setaf 1
+        echo "node version must be >= 14. Please update node before running this script."
+        exit 1
+    fi
+fi
+
+
 # Set environment variables for d2-cluster-2380-core-1
 DHIS2_HOME=/path/to/d2-cluster-2380_home
 CATALINA_OPTS="-Dcontext.path='' -Dlog4j2.configurationFile=$DHIS2_HOME/log4j2.xml"
