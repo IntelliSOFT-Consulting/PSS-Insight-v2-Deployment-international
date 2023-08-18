@@ -20,9 +20,9 @@ fi
 node_version=$(node -v)
 if [[ $node_version =~ ^v([0-9]+)\. ]]; then
     node_major_version="${BASH_REMATCH[1]}"
-    if [[ $node_major_version -lt 14 ]]; then
+    if [[ $node_major_version -lt 16 ]]; then
         tput setaf 1
-        echo "node version must be >= 14. Please update node before running this script."
+        echo "node version must be >= 16. Please update node before running this script."
         exit 1
     fi
 fi

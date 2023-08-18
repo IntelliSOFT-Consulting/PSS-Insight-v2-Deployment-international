@@ -27,9 +27,9 @@ fi
 node_version=$(node -v)
 if [[ $node_version =~ ^v([0-9]+)\. ]]; then
     node_major_version="${BASH_REMATCH[1]}"
-    if [[ $node_major_version -lt 14 ]]; then
+    if [[ $node_major_version -lt 16 ]]; then
         tput setaf 3
-        echo "Node version is less than 14. Installing Node.js version 14..."
+        echo "Node version is less than 16. Installing Node.js version 16..."
         
         # Install nvm if not already installed
         if ! command -v nvm &> /dev/null; then
@@ -38,11 +38,11 @@ if [[ $node_version =~ ^v([0-9]+)\. ]]; then
             source ~/.nvm/nvm.sh
         fi
         
-        # Install Node.js version 14
-        nvm install 14
-        nvm use 14
+        # Install Node.js version 16
+        nvm install 16
+        nvm use 16
         
-        echo "Node.js version 14 has been installed and set as the active version."
+        echo "Node.js version 16 has been installed and set as the active version."
         tput sgr0
     fi
 fi
