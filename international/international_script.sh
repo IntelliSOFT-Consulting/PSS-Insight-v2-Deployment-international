@@ -117,8 +117,6 @@ done
 
 echo "DHIS2 core server is running."
 
-echo "Seeding DHIS2 database..."
-./scripts/seed.sh db/*.gz
 
 
 
@@ -127,5 +125,8 @@ echo "Installing DHIS2 apps..."
 echo "making sure the script is executable..."
 sudo chmod +x ./scripts/webapps.sh
 cd scripts && ./webapps.sh
+
+echo "Seeding DHIS2 database..."
+./scripts/seed.sh db/*.gz
 
 echo "Deployment completed successfully!"
