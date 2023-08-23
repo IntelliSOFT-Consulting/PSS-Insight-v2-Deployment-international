@@ -127,6 +127,6 @@ sudo chmod +x ./scripts/webapps.sh
 cd scripts && ./webapps.sh
 
 echo "Seeding DHIS2 database..."
-./scripts/seed.sh db/*.gz
+./seed.sh ../db/*.gz
 
 echo "Deployment completed successfully!"
