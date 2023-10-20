@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Ensure docker and docker-compose are installed
+# Ensure docker and docker compose are installed
 if ! command -v docker &> /dev/null; then
     echo "Docker is not installed. Please install Docker before running this script."
     exit 1
 fi
 
-if ! command -v docker-compose &> /dev/null; then
+if ! command -v docker compose &> /dev/null; then
     echo "Docker Compose is not installed. Please install Docker Compose before running this script."
     exit 1
 fi
@@ -79,9 +79,9 @@ PG_SHA256=4d3c101ea7ae38982f06bdc73758b53727fb6402ecd9382006fa5ecc7c2ca41f
 PGDATA=/var/lib/postgresql/data
 dhis2_port=8080
 
-# Start the services using docker-compose
-echo "Starting services using docker-compose..."
-docker-compose up -d
+# Start the services using docker compose
+echo "Starting services using docker compose..."
+docker compose up -d
 
 # Wait for a while to allow containers to fully start
 echo "Waiting for containers to start..."
