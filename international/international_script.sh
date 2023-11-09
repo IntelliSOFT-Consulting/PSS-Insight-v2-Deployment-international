@@ -1,6 +1,8 @@
 #!/bin/bash
 
+
 # Ensure docker and docker compose are installed
+
 if ! command -v docker &> /dev/null; then
     echo "Docker is not installed. Please install Docker before running this script."
     exit 1
@@ -116,19 +118,21 @@ done
 
 echo "DHIS2 core server is running."
 
+
 echo "Seeding DHIS2 database..."
 ./scripts/seed.sh db/dhis2_backup_20231031.sql.gz
 
 echo "Adding custom CSS..."
 
-curl -o ./scripts/style.css https://raw.githubusercontent.com/IntelliSOFT-Consulting/PSS-DHIS2-login/main/style.css
 
-curl -X POST -H "Content-Type: text/css" -d @./scripts/style.css "$DHIS2_URL/api/38/files/style"
-
-rm ./scripts/style.css
 
 
 echo "Installing DHIS2 apps..."
+echo "making sure the script is executable..."
+sudo chmod +x ./scripts/webapps.sh
 cd scripts && ./webapps.sh
+
+echo "Seeding DHIS2 database..."
+./seed.sh ../db/*.gz
 
 echo "Deployment completed successfully!"
