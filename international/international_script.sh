@@ -77,7 +77,7 @@ PG_MAJOR=14
 PG_VERSION=14.1
 PG_SHA256=4d3c101ea7ae38982f06bdc73758b53727fb6402ecd9382006fa5ecc7c2ca41f
 PGDATA=/var/lib/postgresql/data
-dhis2_port=2000
+dhis2_port=8080
 
 # Start the services using docker compose
 echo "Starting services using docker compose..."
