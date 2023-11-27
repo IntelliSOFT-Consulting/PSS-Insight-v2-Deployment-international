@@ -100,7 +100,7 @@ services:
       dockerfile: Dockerfile-international_db
     ipc: "private"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+      test: ["CMD-SHELL", "pg_isready", "-d", "international_db"]
       interval: 30s
       timeout: 60s
       retries: 5
