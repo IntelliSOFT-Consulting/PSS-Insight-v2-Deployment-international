@@ -1,59 +1,5 @@
 #!/bin/bash
 
-if ! command -v node &>/dev/null; then
-    tput setaf 1
-    echo "nodejs is not installed. Please install nodejs before running this script."
-    exit 1
-fi
-
-if ! command -v yarn &>/dev/null; then
-    tput setaf 1
-    echo "yarn is not installed. Please install yarn before running this script."
-    exit 1
-fi
-
-if ! command -v git &>/dev/null; then
-    tput setaf 1
-    echo "git is not installed. Please install git before running this script."
-    exit 1
-fi
-
-if ! command -v unzip &>/dev/null; then
-    tput setaf 1
-    echo "unzip is not installed. Please install unzip before running this script."
-    exit 1
-fi
-
-node_version=$(node -v)
-if [[ $node_version =~ ^v([0-9]+)\. ]]; then
-    node_major_version="${BASH_REMATCH[1]}"
-    if [[ $node_major_version -lt 16 ]]; then
-        tput setaf 3
-        echo "Node version is less than 16. Installing Node.js version 16..."
-        
-        # Install nvm if not already installed
-        if ! command -v nvm &> /dev/null; then
-            echo "nvm not found. Installing nvm..."
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-            source ~/.nvm/nvm.sh
-        fi
-        
-        # Install Node.js version 16
-        nvm install 16
-        nvm use 16
-        
-        echo "Node.js version 16 has been installed and set as the active version."
-        tput sgr0
-    fi
-fi
-
-# check if you are currently in scripts folder
-if [[ ! $(pwd) =~ scripts$ ]]; then
-    tput setaf 1
-    echo "Please cd into the scripts folder to run this script."
-    exit 1
-fi
-
 deploy_dhis2_app() {
     echo "Downloading the release..."
 
@@ -123,7 +69,7 @@ while IFS= read -r line; do
     elif [[ $line =~ ^DHIS2_DATA_IMPORT_RELEASE_URL=(.*)$ ]]; then
         data_import_app_release="${BASH_REMATCH[1]}"
     fi
-done <../.env
+done <./.env
 
 # ask for the DHIS2 URL if it is not set in the .env file
 if [[ -z $dhis2_url ]]; then

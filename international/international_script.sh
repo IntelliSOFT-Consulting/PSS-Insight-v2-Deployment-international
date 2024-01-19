@@ -117,7 +117,7 @@ done
 echo "DHIS2 core server is running."
 
 echo "Seeding DHIS2 database..."
-./scripts/seed.sh db/dhis2_dump.sql.gz
+# ./scripts/seed.sh db/dhis2_dump.sql.gz
 
 echo "Adding custom CSS..."
 
@@ -129,6 +129,6 @@ rm ./scripts/style.css
 
 
 echo "Installing DHIS2 apps..."
-cd scripts && ./webapps.sh
+./scripts/install_apps.sh
 
 echo "Deployment completed successfully!"
