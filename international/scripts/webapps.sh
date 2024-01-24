@@ -26,7 +26,7 @@ deploy_dhis2_app() {
 
     # change directory to the app folder
     cd "$app_folder" || exit
-
+    rm yarn.lock
     # create a .env file
     echo "REACT_APP_SERVER_URL=$dhis2_url" >.env
 
