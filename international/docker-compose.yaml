@@ -76,6 +76,7 @@ services:
       - pss_ws_international_db
     networks:
       - docker_default
+    restart: always
 
   pss_ws_international_db:
     command:
