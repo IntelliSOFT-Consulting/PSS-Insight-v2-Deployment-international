@@ -59,12 +59,7 @@ while IFS= read -r line; do
         continue
     fi
     if [[ $line =~ ^SOURCE_URL=(.*)$ ]]; then
-        dhis2_url="${BASH_REMATCH[1]}"
-        if [[ -z "$dhis2_url" ]]; then
-            dhis2_url="https://global.pssinsight.org/api/events"
-        else
-            dhis2_url="${dhis2_url%/api/*}"
-        fi
+        dhis2_url="${BASH_REMATCH[1]%/api/*}"
     elif [[ $line =~ ^SOURCE_USERNAME=(.*)$ ]]; then
         username="${BASH_REMATCH[1]}"
     elif [[ $line =~ ^SOURCE_PASSWORD=(.*)$ ]]; then
