@@ -59,6 +59,7 @@ services:
       - "JAVA_HOME=/usr/local/openjdk-11"
       - "LANG=C.UTF-8"
       - "JAVA_VERSION=11.0.16"
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-globaldev}
     hostname: "9536420637e7"
     image: "intellisoftdev/dhis_pss_international:v3"
     build:
