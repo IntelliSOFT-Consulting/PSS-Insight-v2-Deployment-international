@@ -26,7 +26,7 @@ deploy_dhis2_app() {
 
     # change directory to the app folder
     cd "$app_folder" || exit
-
+    rm yarn.lock
     # create a .env file
     echo "REACT_APP_SERVER_URL=$dhis2_url" >.env
 
@@ -59,7 +59,12 @@ while IFS= read -r line; do
         continue
     fi
     if [[ $line =~ ^SOURCE_URL=(.*)$ ]]; then
-        dhis2_url="${BASH_REMATCH[1]%/api/*}"
+        dhis2_url="${BASH_REMATCH[1]}"
+        if [[ -z "$dhis2_url" ]]; then
+            dhis2_url="https://global.pssinsight.org"
+        else
+            dhis2_url="${dhis2_url%/api/*}"
+        fi
     elif [[ $line =~ ^SOURCE_USERNAME=(.*)$ ]]; then
         username="${BASH_REMATCH[1]}"
     elif [[ $line =~ ^SOURCE_PASSWORD=(.*)$ ]]; then
