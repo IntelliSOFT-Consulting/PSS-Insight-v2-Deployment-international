@@ -67,8 +67,9 @@ services:
       dockerfile: Dockerfile-dhis_pss_international
     ipc: "private"
     logging:
-      driver: "json-file"
-      options: {}
+      driver: journald
+      options:
+        tag: "pss_ws_international"
     mac_address: "02:42:ac:11:00:02"
     ports:
       - "7009:7009/tcp"
